@@ -12,6 +12,11 @@ func (s *Server) login(w http.ResponseWriter, r *http.Request) {
 	var req models.User
 	json.NewDecoder(r.Body).Decode(&req)
 
+	if req.ID == 0 || req.Tuition == "" || req.Password == "" {
+		util.RespondWithError(w, http.StatusBadRequest, "The user do not exists.")
+		return
+	}
+
 	user, err := s.service.UserService.UserByTuition(req.Tuition)
 	if err != nil {
 		util.RespondWithError(w, http.StatusOK, err.Error())
