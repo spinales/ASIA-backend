@@ -71,6 +71,17 @@ func (server *Server) setupRouter() {
 			r.Get("/{code}", server.GetCourseByCodeHandler)
 			r.Get("/{name}", server.GetCourseByNameHandler)
 		})
+		r.Route("/user", func(r chi.Router) {
+			r.Get("/", server.GetUsersHandler)
+			r.Post("/", server.AddUserHandler)
+			r.Route("/{id}", func(r chi.Router) {
+				r.Delete("/", server.DeleteUserHandler)
+				r.Put("/", server.UpdateUserHandler)
+				r.Get("/", server.GetUserByIDHandler)
+			})
+			r.Get("/{tuition}", server.GetUserByTuitionHandler)
+			r.Get("/{firstname}", server.GetUserByFirstnameHandler)
+		})
 	})
 
 	server.router = router

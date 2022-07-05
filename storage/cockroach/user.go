@@ -27,10 +27,16 @@ func (s *UserService) User(id uint) (*models.User, error) {
 	return &cou, nil
 }
 
-func (s *UserService) UserByFirstname(name string) (*[]models.User, error) {
+func (s *UserService) Users() (*[]models.User, error) {
 	var users []models.User
-	s.DB.Where(&models.User{Firstname: name}).Find(&users)
+	s.DB.Find(&users)
 	return &users, nil
+}
+
+func (s *UserService) UserByFirstname(name string) (*models.User, error) {
+	var user models.User
+	s.DB.Where(&models.User{Firstname: name}).First(&user)
+	return &user, nil
 }
 
 func (s *UserService) Deleteuser(id uint) error {
