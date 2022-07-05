@@ -36,7 +36,7 @@ func LoadConfig() Config {
 		AppVersion:          "v0.1",
 		DBVersion:           1, // current db version
 		ServerAddress:       os.Getenv("Server_Address"),
-		TokenSymmetricKey:   "", // pending
+		TokenSymmetricKey:   "ZnQSxSQRpZXt2ATNt5ktZ6bamCY6JHEn", // pending
 		AccessTokenDuration: time.Hour * time.Duration(num),
 	}
 }
