@@ -8,5 +8,4 @@ type Nacionality struct {
 	City       string
 	adress     string
 	postalCode string
-	Users      []User
 }

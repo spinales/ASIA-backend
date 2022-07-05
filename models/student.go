@@ -9,6 +9,6 @@ type Student struct {
 	TrimesterCompleted uint8
 	Pensum             string
 	State              string
-	QuarterlyIndex     uint
-	GeneralIndex       uint
+	QuarterlyIndex     float32 `gorm:"type:numeric"`
+	GeneralIndex       float32 `gorm:"type:numeric"`
 }
