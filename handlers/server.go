@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"fmt"
+	"log"
 	"net/http"
 	"time"
 
@@ -67,12 +68,8 @@ func (server *Server) setupRouter() {
 				r.Put("/", server.UpdateCourseHandler)
 				r.Get("/", server.GetCourseByIDHandler)
 			})
-			r.Route("/{code}", func(r chi.Router) {
-				r.Get("/", server.GetCourseByCodeHandler)
-			})
-			r.Route("/{name}", func(r chi.Router) {
-				r.Get("/", server.GetCourseByNameHandler)
-			})
+			r.Get("/{code}", server.GetCourseByCodeHandler)
+			r.Get("/{name}", server.GetCourseByNameHandler)
 		})
 	})
 
@@ -81,5 +78,6 @@ func (server *Server) setupRouter() {
 
 // Start runs the HTTP server on a specific address.
 func (server *Server) Start(address string) error {
+	log.Println("Server running in http://localhost" + address)
 	return http.ListenAndServe(address, server.router)
 }
