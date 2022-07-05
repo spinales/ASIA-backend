@@ -48,6 +48,11 @@ func (s *Server) register(w http.ResponseWriter, r *http.Request) {
 	var req models.User
 	json.NewDecoder(r.Body).Decode(&req)
 
+	if req.ID == 0 || req.Tuition == "" || req.Password == "" {
+		util.RespondWithError(w, http.StatusBadRequest, "The user do not exists.")
+		return
+	}
+
 	user, _ := s.service.UserService.UserByTuition(req.Tuition)
 	if user.Password != req.Password {
 		util.RespondWithError(w, http.StatusUnauthorized, "The user tuition or password is incorrect, try again.")
