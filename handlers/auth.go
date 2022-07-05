@@ -12,7 +12,7 @@ func (s *Server) login(w http.ResponseWriter, r *http.Request) {
 	var req models.User
 	json.NewDecoder(r.Body).Decode(&req)
 
-	if req.ID == 0 || req.Tuition == "" || req.Password == "" {
+	if req.Tuition == "" || req.Password == "" {
 		util.RespondWithError(w, http.StatusBadRequest, "The user do not exists.")
 		return
 	}
@@ -53,7 +53,7 @@ func (s *Server) register(w http.ResponseWriter, r *http.Request) {
 	var req models.User
 	json.NewDecoder(r.Body).Decode(&req)
 
-	if req.ID == 0 || req.Tuition == "" || req.Password == "" {
+	if req.Tuition == "" || req.Password == "" {
 		util.RespondWithError(w, http.StatusBadRequest, "The user do not exists.")
 		return
 	}
