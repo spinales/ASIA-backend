@@ -92,7 +92,7 @@ func (server *Server) setupRouter() {
 				r.Get("/", server.GetStudentByIDHandler)
 			})
 		})
-		r.Get("record", server.AcademicRecordHandler)
+		r.Get("/record", server.AcademicRecordHandler)
 	})
 
 	server.router = router
