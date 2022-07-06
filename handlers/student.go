@@ -47,7 +47,7 @@ func (s *Server) AddStudentHandler(w http.ResponseWriter, r *http.Request) {
 		"QuartelyIndex":       u.QuarterlyIndex,
 		"GeneralIndex":        u.GeneralIndex,
 	}, "message": "ok"})
-	return
+
 }
 
 func (s *Server) DeleteStudentHandler(w http.ResponseWriter, r *http.Request) {
@@ -80,7 +80,7 @@ func (s *Server) DeleteStudentHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	util.RespondwithJSON(w, http.StatusOK, map[string]interface{}{"message": "ok"})
-	return
+
 }
 
 func (s *Server) UpdateStudentHandler(w http.ResponseWriter, r *http.Request) {
@@ -125,7 +125,7 @@ func (s *Server) UpdateStudentHandler(w http.ResponseWriter, r *http.Request) {
 		"QuartelyIndex":       u.QuarterlyIndex,
 		"GeneralIndex":        u.GeneralIndex,
 	}, "message": "ok"})
-	return
+
 }
 
 func (s *Server) GetStudentsHandler(w http.ResponseWriter, r *http.Request) {
@@ -150,7 +150,7 @@ func (s *Server) GetStudentsHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	util.RespondwithJSON(w, http.StatusOK, map[string]interface{}{"message": "ok", "students": stus})
-	return
+
 }
 
 func (s *Server) GetStudentByIDHandler(w http.ResponseWriter, r *http.Request) {
@@ -192,7 +192,7 @@ func (s *Server) GetStudentByIDHandler(w http.ResponseWriter, r *http.Request) {
 		"QuartelyIndex":       u.QuarterlyIndex,
 		"GeneralIndex":        u.GeneralIndex,
 	}})
-	return
+
 }
 
 func (s *Server) GetRankingHandler(w http.ResponseWriter, r *http.Request) {
@@ -204,5 +204,5 @@ func (s *Server) GetRankingHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	util.RespondwithJSON(w, http.StatusOK, map[string]interface{}{"message": "ok", "ranking": ranking})
-	return
+
 }

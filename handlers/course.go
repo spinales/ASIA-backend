@@ -45,7 +45,7 @@ func (s *Server) AddCourseHandler(w http.ResponseWriter, r *http.Request) {
 		"Credits":      c.Credits,
 		"AcademicArea": c.AcademicArea,
 	}, "message": "ok"})
-	return
+
 }
 
 func (s *Server) DeleteCourseHandler(w http.ResponseWriter, r *http.Request) {
@@ -78,7 +78,7 @@ func (s *Server) DeleteCourseHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	util.RespondwithJSON(w, http.StatusOK, map[string]interface{}{"message": "ok"})
-	return
+
 }
 
 func (s *Server) UpdateCourseHandler(w http.ResponseWriter, r *http.Request) {
@@ -121,7 +121,7 @@ func (s *Server) UpdateCourseHandler(w http.ResponseWriter, r *http.Request) {
 		"Credits":      c.Credits,
 		"AcademicArea": c.AcademicArea,
 	}, "message": "ok"})
-	return
+
 }
 
 func (s *Server) GetCoursesHandler(w http.ResponseWriter, r *http.Request) {
@@ -133,7 +133,7 @@ func (s *Server) GetCoursesHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	util.RespondwithJSON(w, http.StatusOK, map[string]interface{}{"message": "ok", "courses": courses})
-	return
+
 }
 
 func (s *Server) GetCourseByIDHandler(w http.ResponseWriter, r *http.Request) {
@@ -153,7 +153,7 @@ func (s *Server) GetCourseByIDHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	util.RespondwithJSON(w, http.StatusOK, map[string]interface{}{"message": "ok", "course": course})
-	return
+
 }
 
 func (s *Server) GetCourseByNameHandler(w http.ResponseWriter, r *http.Request) {
@@ -166,7 +166,7 @@ func (s *Server) GetCourseByNameHandler(w http.ResponseWriter, r *http.Request) 
 	}
 
 	util.RespondwithJSON(w, http.StatusOK, map[string]interface{}{"message": "ok", "course": course})
-	return
+
 }
 
 func (s *Server) GetCourseByCodeHandler(w http.ResponseWriter, r *http.Request) {
@@ -179,5 +179,5 @@ func (s *Server) GetCourseByCodeHandler(w http.ResponseWriter, r *http.Request) 
 	}
 
 	util.RespondwithJSON(w, http.StatusOK, map[string]interface{}{"message": "ok", "course": course})
-	return
+
 }

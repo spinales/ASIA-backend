@@ -48,7 +48,7 @@ func (s *Server) AddUserHandler(w http.ResponseWriter, r *http.Request) {
 		"Role":           u.Role,
 		"Nationality":    u.NationalityID,
 	}, "message": "ok"})
-	return
+
 }
 
 func (s *Server) DeleteUserHandler(w http.ResponseWriter, r *http.Request) {
@@ -81,7 +81,7 @@ func (s *Server) DeleteUserHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	util.RespondwithJSON(w, http.StatusOK, map[string]interface{}{"message": "ok"})
-	return
+
 }
 
 func (s *Server) UpdateUserHandler(w http.ResponseWriter, r *http.Request) {
@@ -127,7 +127,7 @@ func (s *Server) UpdateUserHandler(w http.ResponseWriter, r *http.Request) {
 		"Role":           u.Role,
 		"Nationality":    u.NationalityID,
 	}, "message": "ok"})
-	return
+
 }
 
 func (s *Server) GetUsersHandler(w http.ResponseWriter, r *http.Request) {
@@ -152,7 +152,7 @@ func (s *Server) GetUsersHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	util.RespondwithJSON(w, http.StatusOK, map[string]interface{}{"message": "ok", "users": users})
-	return
+
 }
 
 func (s *Server) GetUserByIDHandler(w http.ResponseWriter, r *http.Request) {
@@ -195,7 +195,7 @@ func (s *Server) GetUserByIDHandler(w http.ResponseWriter, r *http.Request) {
 		"Role":           u.Role,
 		"Nationality":    u.NationalityID,
 	}})
-	return
+
 }
 
 func (s *Server) GetUserByFirstnameHandler(w http.ResponseWriter, r *http.Request) {
@@ -231,7 +231,7 @@ func (s *Server) GetUserByFirstnameHandler(w http.ResponseWriter, r *http.Reques
 		"Role":           u.Role,
 		"Nationality":    u.NationalityID,
 	}})
-	return
+
 }
 
 func (s *Server) GetUserByTuitionHandler(w http.ResponseWriter, r *http.Request) {
@@ -267,5 +267,5 @@ func (s *Server) GetUserByTuitionHandler(w http.ResponseWriter, r *http.Request)
 		"Role":           u.Role,
 		"Nationality":    u.NationalityID,
 	}})
-	return
+
 }
