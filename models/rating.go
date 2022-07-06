@@ -8,4 +8,5 @@ type Rating struct {
 	CourseID     uint
 	Rating       uint
 	RatingLetter string
+	CourseName   string `gorm:"-:all"`
 }

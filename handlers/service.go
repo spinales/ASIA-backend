@@ -10,6 +10,7 @@ type Service struct {
 	UserService    *cockroach.UserService
 	CourseService  *cockroach.CourseService
 	StudentService *cockroach.StudentService
+	RatingService  *cockroach.RatingService
 }
 
 // NewService create new service
@@ -18,5 +19,6 @@ func NewService(db *gorm.DB) *Service {
 		UserService:    &cockroach.UserService{DB: db},
 		CourseService:  &cockroach.CourseService{DB: db},
 		StudentService: &cockroach.StudentService{DB: db},
+		RatingService:  &cockroach.RatingService{DB: db},
 	}
 }
