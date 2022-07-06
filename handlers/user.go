@@ -91,7 +91,7 @@ func (s *Server) UpdateUserHandler(w http.ResponseWriter, r *http.Request) {
 	ID := r.Context().Value(PasetoKey).(*paseto.JSONToken).Issuer
 	user, err := s.service.UserService.UserByTuition(ID)
 	if err != nil {
-		log.Println("Error in update course Handler\n", err)
+		log.Println("Error in update user Handler\n", err)
 		util.RespondWithError(w, http.StatusInternalServerError, "An error has occurred on the server, try later.")
 		return
 	}
