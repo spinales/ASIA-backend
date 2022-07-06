@@ -2,7 +2,9 @@ package handlers
 
 import (
 	"encoding/json"
+	"log"
 	"net/http"
+	"strings"
 
 	"github.com/spinales/ASIA-backend/models"
 	"github.com/spinales/ASIA-backend/util"
@@ -31,6 +33,36 @@ func (s *Server) login(w http.ResponseWriter, r *http.Request) {
 	token, err := s.tokenMaker.CreateToken(user.Tuition, s.config.AccessTokenDuration)
 	if err != nil {
 		util.RespondWithError(w, http.StatusOK, err.Error())
+		return
+	}
+
+	if strings.ToLower(user.Role) == "estudiante" {
+		stu, err := s.service.StudentService.StudentByUserID(user.ID)
+		if err != nil {
+			log.Println("Error in login Handler\n", err)
+			util.RespondWithError(w, http.StatusInternalServerError, "An error has occurred on the server, try later.")
+			return
+		}
+
+		util.RespondwithJSON(w, http.StatusOK, map[string]interface{}{"token": token, "user": map[string]interface{}{
+			"createdAt":           user.CreatedAt,
+			"updatedAt":           user.UpdatedAt,
+			"deletedAt":           user.DeletedAt,
+			"tuition":             user.Tuition,
+			"password":            user.Password,
+			"Firstname":           user.Firstname,
+			"Lastname":            user.Lastname,
+			"Age":                 user.Age,
+			"InsituteEmail":       user.InsituteEmail,
+			"Status":              user.Status,
+			"Role":                user.Role,
+			"Career":              stu.Career,
+			"TrimestrerCompleted": stu.TrimesterCompleted,
+			"Pensum":              stu.Pensum,
+			"State":               stu.State,
+			"QuartelyIndex":       stu.QuarterlyIndex,
+			"GeneralIndex":        stu.GeneralIndex,
+		}, "message": "OK"})
 		return
 	}
 
@@ -105,6 +137,4 @@ func (s *Server) register(w http.ResponseWriter, r *http.Request) {
 		"Status":        user.Status,
 		"Role":          user.Role,
 	}, "message": "OK"})
-
-	return
 }
