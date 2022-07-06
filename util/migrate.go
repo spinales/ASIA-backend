@@ -31,7 +31,7 @@ func MigrateDB(migrationPath string, config *Config) error {
 	return nil
 }
 
-func MigrateDB2(migrationPath string, config *Config) error {
+func MigrateDB2(config *Config) error {
 	db, err := gorm.Open(postgres.Open(config.DBURI), &gorm.Config{})
 	if err != nil {
 		log.Fatal("failed to connect database", err)
