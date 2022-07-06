@@ -36,7 +36,7 @@ func (s *Server) login(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	if strings.ToLower(user.Role) == "estudiante" {
+	if strings.ToLower(user.Role) == "estudiante" || user.Role == "Estudiante" {
 		stu, err := s.service.StudentService.StudentByUserID(user.ID)
 		if err != nil {
 			log.Println("Error in login Handler\n", err)
